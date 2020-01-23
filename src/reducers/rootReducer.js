@@ -23,8 +23,11 @@ export const rootReducer = (state = initialState, action) => {
       console.log(`From rootReducer`, state)
       return {
         ...state,
-        additionalPrice: state.additionalPrice + action.payload
+        additionalPrice: 
+          state.additionalPrice + action.payload > 3750 ? 3750 : state.additionalPrice + action.payload
       }
+    case "ADD_FEATURE":
+      return {}
 
 
 
