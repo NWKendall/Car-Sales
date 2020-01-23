@@ -1,3 +1,5 @@
+import { ADD_FEATURE, REMOVE_FEATURE } from "../actions/carActions";
+
 const initialState = {
   additionalPrice: 0,
 
@@ -18,39 +20,33 @@ const initialState = {
 };
 
 export const rootReducer = (state = initialState, action) => {
-  switch(action.type) {
-    case "UPDATE_TOTAL":
-      console.log(`From rootReducer`, state)
-      return {
-        ...state,
-        additionalPrice: 
-          state.additionalPrice + action.payload > 3750 ? 3750 : state.additionalPrice + action.payload
-      }
-    
-    case "REMOVE_FEATURE":
+  switch(action.type) {   
+    case REMOVE_FEATURE:
       return {
         ...state,
         additionalPrice: state.additionalPrice - action.payload.price,
         car: {
           ...state.car,
-          features: [state.car.features.filter(
-            feat => feat.id !== action.payload.id)]
+          features:              
+            state.car.features.filter(
+            feat => feat.id !== action.payload.id)
         },
-        additionalFeatures: [state.additionalFeatures.filter(
-          feat =>  feat.id !== action.payload.id
-        )]
-      }           
-    
-    case "ADD_FEATURE":
+        additionalFeatures: 
+          [...state.additionalFeatures, action.payload]
+          
+          
+      }            
+    case ADD_FEATURE:
+      console.log(action.payload)
       return {
         ...state,   
-        additionalPrice: state.additionalPrice + action.payload.price,
-
+        additionalPrice: state.additionalPrice +  action.payload.price,
         car: {...state.car,
           features: [...state.car.features, action.payload]
         },
-        additionalFeatures: state.additionalFeatures.filter(
-          feat =>  feat.id !== action.payload.id
+        additionalFeatures: 
+        state.additionalFeatures.filter(
+          feat => feat.id !== action.payload.id
         )
       }
 

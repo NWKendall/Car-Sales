@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import AdditionalFeature from './AdditionalFeature';
 
 const AdditionalFeatures = props => {
+  console.log(`this is addFeatures`, props)
   return (
     <div className="content">
       <h4>Additional Features</h4>
@@ -24,6 +25,7 @@ const AdditionalFeatures = props => {
 };
 
 const mapStateToProps = state => {
+  
   return {
     addFeaturesProps: state.rootReducer.additionalFeatures
   }
