@@ -35,7 +35,10 @@ export const rootReducer = (state = initialState, action) => {
           ...state.car,
           features: [state.car.features.filter(
             feat => feat.id !== action.payload.id)]
-        }
+        },
+        additionalFeatures: [state.additionalFeatures.filter(
+          feat =>  feat.id !== action.payload.id
+        )]
       }           
     
     case "ADD_FEATURE":
