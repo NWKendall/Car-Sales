@@ -18,7 +18,7 @@ const initialState = {
 export const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case "UPDATE_TOTAL":
-      console.log(`From TotalReducer`, state)
+      console.log(`From rotReducer`, state)
       return {
         ...state,
         additionalPrice: state.additionalPrice + action.payload
