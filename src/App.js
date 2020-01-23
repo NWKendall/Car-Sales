@@ -6,6 +6,7 @@ import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
+
 const App = () => {
   const state = {
     // additionalPrice: 0,
@@ -31,6 +32,7 @@ const App = () => {
 
   const buyItem = item => {
     // dipsatch an action here to add an item
+   
   };
 
   return (
@@ -40,7 +42,7 @@ const App = () => {
         <AddedFeatures car={state.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
+        <AdditionalFeatures additionalFeatures={state.additionalFeatures} buyItem={buyItem}/>
         <Total car={state.car} />
       </div>
     </div>
