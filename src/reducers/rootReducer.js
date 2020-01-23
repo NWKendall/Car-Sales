@@ -26,8 +26,31 @@ export const rootReducer = (state = initialState, action) => {
         additionalPrice: 
           state.additionalPrice + action.payload > 3750 ? 3750 : state.additionalPrice + action.payload
       }
+    
+    case "REMOVE_FEATURE":
+      return {
+        ...state,
+        additionalPrice: state.additionalPrice - action.payload.price,
+        car: {
+          ...state.car,
+          features: state.car.features.filter(
+            feat => feat.id !== action.payload.id)
+        }
+      }
+    
+    
+    
+    
     case "ADD_FEATURE":
-      return {}
+      return {
+        ...state,   
+        car: {...state.car,
+          features: [...state.car.features, action.payload]
+        },
+        additionalFeatures: state.additionalFeatures.filter(
+          feat =>  feat.id !== action.payload.id
+        )
+      }
 
 
 
